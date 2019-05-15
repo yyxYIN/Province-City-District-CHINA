@@ -45,6 +45,12 @@ def getDistinctByCity(province):
 for one in provinceData:
     getCitysByProvince(one)
 
+# 复制原数组
+latestData = provinceData[:]
+# 把省后面的括号内容去掉
+for a in latestData:
+    a['addName'] = a['addName'].split('(')[0]
+
 # 结果存入json.txt
 with open('json.txt', 'w') as json_file:
-    json.dump(provinceData, json_file, ensure_ascii=False)
+    json.dump(latestData, json_file, ensure_ascii=False)
