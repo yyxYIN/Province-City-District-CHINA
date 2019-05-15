@@ -1,5 +1,6 @@
 import requests
 from provincesjson import getAllProvinces
+import json
 
 headers = {
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -44,4 +45,6 @@ def getDistinctByCity(province):
 for one in provinceData:
     getCitysByProvince(one)
 
-print(provinceData)
+# 结果存入json.txt
+with open('json.txt', 'w') as json_file:
+    json.dump(provinceData, json_file, ensure_ascii=False)
