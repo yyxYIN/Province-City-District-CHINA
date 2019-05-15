@@ -8,10 +8,9 @@ headers = {
 
 #最初数据，最终数据也储存在这里
 provinceData = getAllProvinces()
-# print(provinceData)
 
 
-def getCitysByProvince(province):
+def getAllData(province):
     if (province['addName'] == '北京市(京)' or province['addName'] == '天津市(津)' or province['addName'] == '重庆市(渝)' or province['addName'] == '上海市(沪)'):
         province['children'].append({
             'addName': province['addName'].split('(')[0],
@@ -43,7 +42,7 @@ def getDistinctByCity(province):
 
 
 for one in provinceData:
-    getCitysByProvince(one)
+    getAllData(one)
 
 # 复制原数组
 latestData = provinceData[:]
@@ -54,3 +53,4 @@ for a in latestData:
 # 结果存入json.txt
 with open('json.txt', 'w') as json_file:
     json.dump(latestData, json_file, ensure_ascii=False)
+    print('完成')
